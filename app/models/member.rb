@@ -1,5 +1,6 @@
 class Member < ApplicationRecord
-  has_one :doctor, through: :appointments
+  has_many :appointments
   has_many :prescriptions
-  has_many :vitals
+  has_one :doctor, through: :appointments
+  has_many :vitals, through: :appointments
 end
