@@ -1,8 +1,4 @@
 class PatientsController < ApplicationController
-  def index_user_meds
-    @user_meds = User.
-  end 
-
   private
 
   def patient_params
@@ -22,4 +18,9 @@ def create
       { error: "Oops! Something went wrong. Please check patient's information and try again" },
            status: :unprocessable_entity
   end
+end
+
+def current_meds
+  @patient = Patient.find params[:id]
+  render json: { patient: @patient }, methods: [:sorted_meds], status: :ok
 end
